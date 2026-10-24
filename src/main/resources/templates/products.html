@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>First Java CRUD</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<main class="container">
+    <header>
+        <div>
+            <p class="eyebrow">Student 72016</p>
+            <h1>Product inventory</h1>
+            <p>A small Java CRUD application for managing shop inventory.</p>
+        </div>
+        <a class="button primary" th:href="@{/products/new}">+ Add product</a>
+    </header>
+
+    <div class="alert success" role="status" th:if="${param.saved != null}">Product saved successfully.</div>
+    <div class="alert success" role="status" th:if="${param.deleted != null}">Product deleted successfully.</div>
+    <div class="alert error" role="alert" th:if="${param.error != null}">Product not found.</div>
+
+    <form class="search" method="get" th:action="@{/}">
+        <label for="search">Search by product name or category</label>
+        <div class="search-row">
+            <input id="search" name="search" type="search" th:value="${search}" placeholder="e.g. Coffee">
+            <button class="button" type="submit">Search</button>
+            <a class="button secondary" th:if="${search != ''}" th:href="@{/}">Clear</a>
+        </div>
+    </form>
+
+    <p class="result-count" th:text="${products.size() == 1 ? '1 product' : products.size() + ' products'}"></p>
+
+    <div class="table-card">
+        <table>
+            <thead>
+            <tr><th>ID</th><th>Name</th><th>Category</th><th>Price</th><th>Quantity</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td class="strong" th:text="${product.name}"></td>
+                <td th:text="${product.category}"></td>
+                <td th:text="|${#numbers.formatDecimal(product.price, 1, 2)} PLN|"></td>
+                <td th:text="${product.quantity}"></td>
+                <td class="actions">
+                    <a class="button small" th:href="@{/products/{id}/edit(id=${product.id})}">Edit</a>
+                    <form th:action="@{/products/{id}/delete(id=${product.id})}" method="post"
+                          onsubmit="return confirm('Delete this product?')">
+                        <button class="button small danger" type="submit"
+                                th:attr="aria-label=|Delete ${product.name}|">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <tr th:if="${products.isEmpty()}">
+                <td colspan="6" class="empty">No products found.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>
