@@ -9,8 +9,8 @@ Current evidence:
 3. `edit-product.png` — the Update form populated with an existing product.
 4. `intellij-startup.png` — IntelliJ IDEA with the application source and successful startup output, including `Tomcat started on port 8080` and `Started FirstJavaCrudApplication`.
 5. `github-history.png` — the current public GitHub repository and commit history.
-6. `github-final.png` — the completed public repository after the assignment files were uploaded.
+6. `github-final.png` — the merged partner Pull Request showing the contribution from `Kyrylo71601` and the merge into `72016-tk:main`.
 
-After the partner Pull Request is merged, replace `github-history.png` with an updated screenshot that clearly shows commits from both student 72016 and the partner. An additional screenshot of the merged Pull Request is recommended because it makes the collaboration requirement easy to verify.
+The collaboration evidence now includes both the updated commit history and the merged Pull Request.
 
 Use PNG or JPG files. Do not include passwords, tokens, email notifications, or unrelated private information in screenshots.
