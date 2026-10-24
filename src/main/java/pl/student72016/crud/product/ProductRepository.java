@@ -1,0 +1,10 @@
+package pl.student72016.crud.product;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface ProductRepository extends JpaRepository<Product, Long> {
+    List<Product> findByNameContainingIgnoreCaseOrCategoryContainingIgnoreCaseOrderByIdAsc(
+            String name, String category);
+}
