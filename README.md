@@ -1,6 +1,6 @@
 # First Java CRUD
 
-A small browser-based inventory application created for student **72016** as a first Java CRUD exercise.
+A browser-based inventory management application built with Java and Spring Boot, supporting product creation, searching, editing, deletion, and persistent data storage.
 
 The application supports:
 
